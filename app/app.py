@@ -1,6 +1,6 @@
 import json
 import socket
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 
 class ReportApiHandler(BaseHTTPRequestHandler):
@@ -17,4 +17,4 @@ class ReportApiHandler(BaseHTTPRequestHandler):
         self.wfile.write(responseBody)
 
 
-HTTPServer(("0.0.0.0", 8080), ReportApiHandler).serve_forever()
+ThreadingHTTPServer(("0.0.0.0", 8080), ReportApiHandler).serve_forever()
